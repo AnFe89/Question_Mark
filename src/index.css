@@ -1,0 +1,25 @@
+@import "tailwindcss";
+
+@theme {
+  --color-void: #030303;
+  --color-electric: #cfff05;
+  --color-pure: #ffffff;
+  --font-sans: 'Inter', sans-serif;
+  --font-display: 'Outfit', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400&family=JetBrains+Mono:wght@400&family=Outfit:wght@200;300&display=swap');
+
+body {
+  margin: 0;
+  overflow-x: hidden;
+  cursor: none;
+  background-color: var(--color-void);
+  color: var(--color-pure);
+}
+
+::selection {
+  background: var(--color-electric);
+  color: var(--color-void);
+}
