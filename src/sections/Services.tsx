@@ -35,13 +35,13 @@ function ServiceItem({ service }: { service: typeof services[0], index: number }
   return (
     <div ref={ref} className="h-screen w-full flex items-center justify-center relative snap-center">
       <div className={`transition-all duration-700 ease-out ${isInView ? 'opacity-100 scale-100 blur-0' : 'opacity-20 scale-95 blur-sm'}`}>
-        <div className="flex flex-col md:flex-row items-start gap-8 md:gap-32 max-w-6xl mx-auto px-8">
-          <div className="text-[10vw] md:text-[8vw] font-display font-light leading-none text-transparent" style={{ WebkitTextStroke: '1px #cfff05' }}>
+        <div className="flex flex-col md:flex-row items-start gap-8 md:gap-32 max-w-6xl mx-auto px-4 md:px-8">
+          <div className="text-[15vw] md:text-[8vw] font-display font-light leading-none text-transparent" style={{ WebkitTextStroke: '1px #cfff05' }}>
             {service.id}
           </div>
           <div className="max-w-xl pt-4">
-            <h3 className="text-4xl md:text-6xl font-light mb-8 uppercase tracking-tight">{service.title}</h3>
-            <p className="text-xl text-ghost font-light leading-relaxed">{service.description}</p>
+            <h3 className="text-3xl md:text-6xl font-light mb-4 md:mb-8 uppercase tracking-tight">{service.title}</h3>
+            <p className="text-lg md:text-xl text-ghost font-light leading-relaxed">{service.description}</p>
           </div>
         </div>
       </div>

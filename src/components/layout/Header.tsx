@@ -3,7 +3,7 @@ import { motion } from 'framer-motion'
 export function Header() {
   return (
     <motion.header 
-      className="fixed top-0 left-0 w-full p-8 flex justify-between items-center z-40 mix-blend-difference text-pure"
+      className="fixed top-0 left-0 w-full p-4 md:p-8 flex justify-between items-center z-40 mix-blend-difference text-pure"
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}

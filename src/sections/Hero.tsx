@@ -32,7 +32,7 @@ export function Hero() {
         style={{ y: y1, opacity }}
       >
         <motion.h1 
-          className="text-[15vw] leading-[0.8] font-display font-light uppercase tracking-tighter mix-blend-difference select-none"
+          className="text-[15vw] md:text-[15vw] leading-[0.8] font-display font-light uppercase tracking-tighter mix-blend-difference select-none flex flex-col md:block"
           variants={containerVariants}
           initial="hidden"
           animate="visible"
@@ -43,7 +43,7 @@ export function Hero() {
               <motion.span key={i} variants={charVariants} className="inline-block">{char}</motion.span>
             ))}
           </div>
-          <div className="overflow-hidden ml-[10vw]">
+          <div className="overflow-hidden md:ml-[10vw]">
             {'MARK'.split('').map((char, i) => (
               <motion.span key={i} variants={charVariants} className="inline-block">{char}</motion.span>
             ))}

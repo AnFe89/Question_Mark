@@ -7,8 +7,8 @@ function ScrambleText({ text, hover }: { text: string, hover: boolean }) {
   
   useEffect(() => {
     if (!hover) {
-      setDisplayText(text)
-      return
+      const timeout = setTimeout(() => setDisplayText(text), 0)
+      return () => clearTimeout(timeout)
     }
     
     let iterations = 0
@@ -32,14 +32,14 @@ export function Contact() {
   const [isHovered, setIsHovered] = useState(false)
 
   return (
-    <section id="contact" className="min-h-screen flex flex-col items-center justify-center bg-void px-8 relative">
-      <h2 className="text-[10vw] font-display font-light uppercase tracking-tighter mb-16 text-center leading-none">
+    <section id="contact" className="min-h-screen flex flex-col items-center justify-center bg-void px-4 md:px-8 relative">
+      <h2 className="text-[15vw] md:text-[10vw] font-display font-light uppercase tracking-tighter mb-8 md:mb-16 text-center leading-none">
         Let's build<br />something
       </h2>
       
       <a 
         href="mailto:hi@question-mark.ai"
-        className="text-4xl md:text-6xl font-light text-electric hover:text-white transition-colors font-mono"
+        className="text-2xl md:text-6xl font-light text-electric hover:text-white transition-colors font-mono break-all md:break-normal"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
         data-cursor="interactive"

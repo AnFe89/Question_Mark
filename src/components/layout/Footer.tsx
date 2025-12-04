@@ -1,6 +1,6 @@
 export function Footer() {
   return (
-    <footer className="w-full py-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center px-8 text-xs text-ghost font-mono bg-void">
+    <footer className="w-full py-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center px-4 md:px-8 text-xs text-ghost font-mono bg-void">
       <div>
         &copy; 2025 QUESTION-MARK<span className="text-electric animate-pulse">.</span>AI
       </div>

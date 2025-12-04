@@ -45,10 +45,10 @@ export function Stats() {
         ))}
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-32 max-w-6xl mx-auto px-8 relative z-10">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-32 max-w-6xl mx-auto px-4 md:px-8 relative z-10">
         {stats.map((stat, i) => (
           <div key={i} className="flex flex-col items-start">
-            <div className="text-[12vw] md:text-[8vw] font-mono leading-none text-electric mb-4">
+            <div className="text-[15vw] md:text-[8vw] font-mono leading-none text-electric mb-2 md:mb-4">
               <Counter value={stat.value} suffix={stat.suffix} />
             </div>
             <div className="text-xl md:text-2xl font-light uppercase tracking-widest text-pure/80">
