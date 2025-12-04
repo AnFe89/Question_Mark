@@ -1,4 +1,4 @@
-import { useRef } from 'react'
+import { useRef, useState, useEffect } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 
 const caseStudies = [
@@ -22,12 +22,24 @@ const caseStudies = [
   }
 ]
 
+function useMobile() {
+  const [isMobile, setIsMobile] = useState(false)
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768)
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
+    return () => window.removeEventListener('resize', checkMobile)
+  }, [])
+  return isMobile
+}
+
 export function CaseStudies() {
   const targetRef = useRef<HTMLDivElement>(null)
   const { scrollYProgress } = useScroll({
     target: targetRef,
     offset: ["start start", "end end"]
   })
+  const isMobile = useMobile()
 
   // We have 3 items, so we need to shift by 2 viewport widths (approx 66.66% of total width if container is 300vw?)
   // Actually, let's just use 100vw * (N-1) logic.
@@ -50,9 +62,15 @@ export function CaseStudies() {
                 <h2 className="text-[15vw] md:text-[10vw] font-display font-light leading-none uppercase tracking-tighter mb-4 md:mb-8 transition-transform duration-500 md:group-hover:scale-105 origin-left">
                   {study.client}
                 </h2>
-                <p className="text-lg md:text-2xl text-ghost font-light max-w-xl opacity-100 translate-y-0 md:opacity-0 md:translate-y-8 md:group-hover:opacity-100 md:group-hover:translate-y-0 transition-all duration-500 delay-100">
+                <motion.p 
+                  className="text-lg md:text-2xl text-ghost font-light max-w-xl opacity-100 translate-y-0 md:opacity-0 md:translate-y-8 md:group-hover:opacity-100 md:group-hover:translate-y-0 transition-all duration-500 delay-100"
+                  initial={isMobile ? { opacity: 0, y: 20 } : {}}
+                  whileInView={isMobile ? { opacity: 1, y: 0 } : {}}
+                  viewport={{ once: false, margin: "-20%" }}
+                  transition={{ duration: 0.8, ease: "easeOut" }}
+                >
                   {study.description}
-                </p>
+                </motion.p>
               </div>
             </div>
           ))}
