@@ -33,6 +33,41 @@ function useMobile() {
   return isMobile
 }
 
+function CaseStudyItem({ study, index, scrollYProgress, isMobile }: { study: typeof caseStudies[0], index: number, scrollYProgress: import('framer-motion').MotionValue<number>, isMobile: boolean }) {
+  // Define fade-in ranges for each slide based on scroll position
+  // Slide 0: 0 -> 0.15
+  // Slide 1: 0.35 -> 0.5
+  // Slide 2: 0.85 -> 1.0
+  const ranges = [
+    [0, 0.15],
+    [0.35, 0.5],
+    [0.85, 1.0]
+  ]
+  
+  const opacityMobile = useTransform(scrollYProgress, ranges[index], [0, 1])
+  const yMobile = useTransform(scrollYProgress, ranges[index], [20, 0])
+
+  return (
+    <div className="relative h-screen w-screen shrink-0 flex items-center justify-center p-4 md:p-16 group">
+      {/* Background */}
+      <div className={`absolute inset-0 bg-linear-to-br ${study.color} opacity-10 md:opacity-0 md:group-hover:opacity-10 transition-opacity duration-700`} />
+      
+      <div className="relative z-10 w-full max-w-6xl">
+        <div className="text-sm font-mono text-electric mb-4">{study.year}</div>
+        <h2 className="text-[15vw] md:text-[10vw] font-display font-light leading-none uppercase tracking-tighter mb-4 md:mb-8 transition-transform duration-500 md:group-hover:scale-105 origin-left">
+          {study.client}
+        </h2>
+        <motion.p 
+          className="text-lg md:text-2xl text-ghost font-light max-w-xl opacity-0 translate-y-8 md:group-hover:opacity-100 md:group-hover:translate-y-0 transition-all duration-500 delay-100"
+          style={isMobile ? { opacity: opacityMobile, y: yMobile } : {}}
+        >
+          {study.description}
+        </motion.p>
+      </div>
+    </div>
+  )
+}
+
 export function CaseStudies() {
   const targetRef = useRef<HTMLDivElement>(null)
   const { scrollYProgress } = useScroll({
@@ -53,25 +88,13 @@ export function CaseStudies() {
       <div className="sticky top-0 flex h-screen items-center overflow-hidden">
         <motion.div style={{ x }} className="flex gap-0 w-[300vw]">
           {caseStudies.map((study, i) => (
-            <div key={i} className="relative h-screen w-screen shrink-0 flex items-center justify-center p-4 md:p-16 group">
-              {/* Background */}
-              <div className={`absolute inset-0 bg-linear-to-br ${study.color} opacity-10 md:opacity-0 md:group-hover:opacity-10 transition-opacity duration-700`} />
-              
-              <div className="relative z-10 w-full max-w-6xl">
-                <div className="text-sm font-mono text-electric mb-4">{study.year}</div>
-                <h2 className="text-[15vw] md:text-[10vw] font-display font-light leading-none uppercase tracking-tighter mb-4 md:mb-8 transition-transform duration-500 md:group-hover:scale-105 origin-left">
-                  {study.client}
-                </h2>
-                <motion.p 
-                  className="text-lg md:text-2xl text-ghost font-light max-w-xl opacity-0 translate-y-8 md:group-hover:opacity-100 md:group-hover:translate-y-0 transition-all duration-500 delay-100"
-                  whileInView={isMobile ? { opacity: 1, y: 0 } : {}}
-                  viewport={{ once: true, margin: "-10%" }}
-                  transition={{ duration: 0.8, ease: "easeOut" }}
-                >
-                  {study.description}
-                </motion.p>
-              </div>
-            </div>
+            <CaseStudyItem 
+              key={i} 
+              study={study} 
+              index={i} 
+              scrollYProgress={scrollYProgress} 
+              isMobile={isMobile} 
+            />
           ))}
         </motion.div>
         
