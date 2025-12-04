@@ -63,10 +63,9 @@ export function CaseStudies() {
                   {study.client}
                 </h2>
                 <motion.p 
-                  className="text-lg md:text-2xl text-ghost font-light max-w-xl opacity-100 translate-y-0 md:opacity-0 md:translate-y-8 md:group-hover:opacity-100 md:group-hover:translate-y-0 transition-all duration-500 delay-100"
-                  initial={isMobile ? { opacity: 0, y: 20 } : {}}
+                  className="text-lg md:text-2xl text-ghost font-light max-w-xl opacity-0 translate-y-8 md:group-hover:opacity-100 md:group-hover:translate-y-0 transition-all duration-500 delay-100"
                   whileInView={isMobile ? { opacity: 1, y: 0 } : {}}
-                  viewport={{ once: false, margin: "-20%" }}
+                  viewport={{ once: true, margin: "-10%" }}
                   transition={{ duration: 0.8, ease: "easeOut" }}
                 >
                   {study.description}
