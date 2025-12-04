@@ -39,7 +39,7 @@ function CaseStudyItem({ study, index, scrollYProgress, isMobile }: { study: typ
   // Slide 1: 0.35 -> 0.5
   // Slide 2: 0.85 -> 1.0
   const ranges = [
-    [0, 0.1],
+    [0, 0.05],
     [0.15, 0.35],
     [0.65, 0.85]
   ]
