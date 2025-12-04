@@ -43,14 +43,14 @@ export function CaseStudies() {
           {caseStudies.map((study, i) => (
             <div key={i} className="relative h-screen w-screen shrink-0 flex items-center justify-center p-4 md:p-16 group">
               {/* Background */}
-              <div className={`absolute inset-0 bg-linear-to-br ${study.color} opacity-0 group-hover:opacity-10 transition-opacity duration-700`} />
+              <div className={`absolute inset-0 bg-linear-to-br ${study.color} opacity-10 md:opacity-0 md:group-hover:opacity-10 transition-opacity duration-700`} />
               
               <div className="relative z-10 w-full max-w-6xl">
                 <div className="text-sm font-mono text-electric mb-4">{study.year}</div>
-                <h2 className="text-[15vw] md:text-[10vw] font-display font-light leading-none uppercase tracking-tighter mb-4 md:mb-8 transition-transform duration-500 group-hover:scale-105 origin-left">
+                <h2 className="text-[15vw] md:text-[10vw] font-display font-light leading-none uppercase tracking-tighter mb-4 md:mb-8 transition-transform duration-500 md:group-hover:scale-105 origin-left">
                   {study.client}
                 </h2>
-                <p className="text-lg md:text-2xl text-ghost font-light max-w-xl opacity-0 translate-y-8 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 delay-100">
+                <p className="text-lg md:text-2xl text-ghost font-light max-w-xl opacity-100 translate-y-0 md:opacity-0 md:translate-y-8 md:group-hover:opacity-100 md:group-hover:translate-y-0 transition-all duration-500 delay-100">
                   {study.description}
                 </p>
               </div>
