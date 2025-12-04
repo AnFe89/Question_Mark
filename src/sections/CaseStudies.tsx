@@ -40,8 +40,8 @@ function CaseStudyItem({ study, index, scrollYProgress, isMobile }: { study: typ
   // Slide 2: 0.85 -> 1.0
   const ranges = [
     [0, 0.15],
-    [0.35, 0.5],
-    [0.85, 1.0]
+    [0.25, 0.45],
+    [0.75, 0.95]
   ]
   
   const opacityMobile = useTransform(scrollYProgress, ranges[index], [0, 1])
